@@ -14,12 +14,6 @@ class PhoneNumberTableViewController: UITableViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(dataChanged), name: PhoneNumberManager.dataChangedNotification, object: nil)
     }
-
-
-    @IBAction func addPhoneNumber() {
-        let d = PhoneNumberManager.NumberData(code: Int(arc4random() % 9 + 1), number: Int(arc4random() % 90000000 + 10000000))
-        PhoneNumberManager.sharedInstance.add(d)
-    }
     
     @IBAction func savePhoneNumbers() {
         PhoneNumberManager.sharedInstance.save()
@@ -28,7 +22,16 @@ class PhoneNumberTableViewController: UITableViewController {
     @objc func dataChanged() {
         tableView.reloadData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nav = segue.destination as? UINavigationController, let viewController = nav.childViewControllers.first as? AddPhoneNumberViewController {
+            viewController.viewModel = AddPhoneNumberViewModel()
+        }
+    }
 
+}
+
+extension PhoneNumberTableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

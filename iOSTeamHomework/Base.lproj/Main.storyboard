@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VLT-Z4-wIy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VLT-Z4-wIy">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -54,6 +55,7 @@
                             <barButtonItem systemItem="add" id="GiC-H1-zAV">
                                 <connections>
                                     <action selector="addPhoneNumber" destination="qLa-lx-OM3" id="HSR-q8-9GX"/>
+                                    <segue destination="wWJ-zf-GdE" kind="presentation" id="mAX-DT-ipI"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="save" id="kxH-d5-Fe7">
@@ -67,6 +69,76 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="psO-WQ-fpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="46" y="65"/>
+        </scene>
+        <!--Add Phone Number View Controller-->
+        <scene sceneID="T1F-X3-Kze">
+            <objects>
+                <viewController id="8Rh-Zq-23T" customClass="AddPhoneNumberViewController" customModule="iOSTeamHomework" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SKO-GW-yWG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sfY-Xm-Hoe">
+                                <rect key="frame" x="16" y="100" width="80" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="P8E-E1-aC5"/>
+                                    <constraint firstAttribute="height" constant="30" id="PJm-EB-5cT"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LeD-8M-464">
+                                <rect key="frame" x="104" y="100" width="255" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="zxa-pt-GE9"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This number is already existed." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HO4-gD-Jps">
+                                <rect key="frame" x="87.5" y="146" width="200.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.77021939766839376" green="0.053721726286357525" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Cjo-0H-nOE" firstAttribute="trailing" secondItem="LeD-8M-464" secondAttribute="trailing" constant="16" id="4qR-mE-GLr"/>
+                            <constraint firstItem="HO4-gD-Jps" firstAttribute="top" secondItem="sfY-Xm-Hoe" secondAttribute="bottom" constant="16" id="8jQ-mi-l9a"/>
+                            <constraint firstItem="LeD-8M-464" firstAttribute="leading" secondItem="sfY-Xm-Hoe" secondAttribute="trailing" constant="8" id="DT5-94-aII"/>
+                            <constraint firstItem="HO4-gD-Jps" firstAttribute="centerX" secondItem="SKO-GW-yWG" secondAttribute="centerX" id="NiO-QX-yv7"/>
+                            <constraint firstItem="sfY-Xm-Hoe" firstAttribute="top" secondItem="Cjo-0H-nOE" secondAttribute="top" constant="36" id="Qto-XK-nQX"/>
+                            <constraint firstItem="LeD-8M-464" firstAttribute="leading" secondItem="sfY-Xm-Hoe" secondAttribute="trailing" constant="8" id="aF4-KZ-xFb"/>
+                            <constraint firstItem="LeD-8M-464" firstAttribute="top" secondItem="Cjo-0H-nOE" secondAttribute="top" constant="36" id="blc-DV-UVO"/>
+                            <constraint firstItem="sfY-Xm-Hoe" firstAttribute="leading" secondItem="Cjo-0H-nOE" secondAttribute="leading" constant="16" id="vpw-Oi-wt4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Cjo-0H-nOE"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="e8g-fO-xb5">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2Dk-g2-TK9">
+                            <connections>
+                                <action selector="cancelButtonTapped" destination="8Rh-Zq-23T" id="caA-Jo-qJe"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Cve-cE-k7z">
+                            <connections>
+                                <action selector="saveButtonTapped" destination="8Rh-Zq-23T" id="683-pY-2kT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="areaCodeField" destination="sfY-Xm-Hoe" id="QLe-wC-W2e"/>
+                        <outlet property="numberExistedLabel" destination="HO4-gD-Jps" id="MDd-MZ-EVy"/>
+                        <outlet property="phoneNumberField" destination="LeD-8M-464" id="rWJ-6E-6vy"/>
+                        <outlet property="saveButton" destination="Cve-cE-k7z" id="TLG-ei-5sG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Yd-6x-XlB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1605.5999999999999" y="63.418290854572717"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qvI-xh-mBD">
@@ -83,6 +155,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VI5-R3-7BT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-906" y="65"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="itZ-jc-nFB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wWJ-zf-GdE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mcc-2N-noE">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8Rh-Zq-23T" kind="relationship" relationship="rootViewController" id="Ln2-I9-Tsc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7fM-sr-LJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="879" y="64"/>
         </scene>
     </scenes>
 </document>

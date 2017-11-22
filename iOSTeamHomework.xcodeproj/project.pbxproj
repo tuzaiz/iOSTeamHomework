@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47E13A4A1FC5972800473AC0 /* AddPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E13A491FC5972800473AC0 /* AddPhoneNumberViewController.swift */; };
+		47E13A4C1FC59AC300473AC0 /* AddPhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E13A4B1FC59AC300473AC0 /* AddPhoneNumberViewModel.swift */; };
+		6C98D0F1BA2DBA5FB725F73C /* Pods_iOSTeamHomework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DDB9CEACB1BCDAD6ECC85D6 /* Pods_iOSTeamHomework.framework */; };
 		AB54AC121F6D65B20000EF31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB54AC111F6D65B20000EF31 /* AppDelegate.swift */; };
 		AB54AC171F6D65B20000EF31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB54AC151F6D65B20000EF31 /* Main.storyboard */; };
 		AB54AC191F6D65B20000EF31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB54AC181F6D65B20000EF31 /* Assets.xcassets */; };
@@ -35,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		47E13A491FC5972800473AC0 /* AddPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhoneNumberViewController.swift; sourceTree = "<group>"; };
+		47E13A4B1FC59AC300473AC0 /* AddPhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhoneNumberViewModel.swift; sourceTree = "<group>"; };
+		5DDB9CEACB1BCDAD6ECC85D6 /* Pods_iOSTeamHomework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSTeamHomework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA927ADD9B7B344140E858FF /* Pods-iOSTeamHomework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSTeamHomework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSTeamHomework/Pods-iOSTeamHomework.debug.xcconfig"; sourceTree = "<group>"; };
 		AB54AC0E1F6D65B20000EF31 /* iOSTeamHomework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSTeamHomework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB54AC111F6D65B20000EF31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB54AC161F6D65B20000EF31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -49,6 +56,7 @@
 		AB54AC331F6D65B20000EF31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB54AC3F1F6D6F3D0000EF31 /* PhoneNumberTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTableViewController.swift; sourceTree = "<group>"; };
 		AB54AC431F6D76BC0000EF31 /* PhoneNumberManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberManager.swift; sourceTree = "<group>"; };
+		EEB337AD7C31E9463354E986 /* Pods-iOSTeamHomework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSTeamHomework.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSTeamHomework/Pods-iOSTeamHomework.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C98D0F1BA2DBA5FB725F73C /* Pods_iOSTeamHomework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +85,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A6A32C7E8AC6B0E52DCBA5D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5DDB9CEACB1BCDAD6ECC85D6 /* Pods_iOSTeamHomework.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		98F661924889D1A54A6C1BCA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA927ADD9B7B344140E858FF /* Pods-iOSTeamHomework.debug.xcconfig */,
+				EEB337AD7C31E9463354E986 /* Pods-iOSTeamHomework.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AB54AC051F6D65B20000EF31 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +109,8 @@
 				AB54AC251F6D65B20000EF31 /* iOSTeamHomeworkTests */,
 				AB54AC301F6D65B20000EF31 /* iOSTeamHomeworkUITests */,
 				AB54AC0F1F6D65B20000EF31 /* Products */,
+				98F661924889D1A54A6C1BCA /* Pods */,
+				7A6A32C7E8AC6B0E52DCBA5D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +129,8 @@
 			children = (
 				AB54AC111F6D65B20000EF31 /* AppDelegate.swift */,
 				AB54AC3F1F6D6F3D0000EF31 /* PhoneNumberTableViewController.swift */,
+				47E13A491FC5972800473AC0 /* AddPhoneNumberViewController.swift */,
+				47E13A4B1FC59AC300473AC0 /* AddPhoneNumberViewModel.swift */,
 				AB54AC431F6D76BC0000EF31 /* PhoneNumberManager.swift */,
 				AB54AC151F6D65B20000EF31 /* Main.storyboard */,
 				AB54AC181F6D65B20000EF31 /* Assets.xcassets */,
@@ -135,9 +165,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB54AC361F6D65B20000EF31 /* Build configuration list for PBXNativeTarget "iOSTeamHomework" */;
 			buildPhases = (
+				96345CEABFED1C64DE232DA5 /* [CP] Check Pods Manifest.lock */,
 				AB54AC0A1F6D65B20000EF31 /* Sources */,
 				AB54AC0B1F6D65B20000EF31 /* Frameworks */,
 				AB54AC0C1F6D65B20000EF31 /* Resources */,
+				B89868569F4BD578D101E096 /* [CP] Embed Pods Frameworks */,
+				E2D76B4EF7249DF7EB17A5D1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,11 +290,71 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		96345CEABFED1C64DE232DA5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iOSTeamHomework-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B89868569F4BD578D101E096 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iOSTeamHomework/Pods-iOSTeamHomework-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOSTeamHomework/Pods-iOSTeamHomework-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2D76B4EF7249DF7EB17A5D1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOSTeamHomework/Pods-iOSTeamHomework-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AB54AC0A1F6D65B20000EF31 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47E13A4C1FC59AC300473AC0 /* AddPhoneNumberViewModel.swift in Sources */,
+				47E13A4A1FC5972800473AC0 /* AddPhoneNumberViewController.swift in Sources */,
 				AB54AC441F6D76BC0000EF31 /* PhoneNumberManager.swift in Sources */,
 				AB54AC121F6D65B20000EF31 /* AppDelegate.swift in Sources */,
 				AB54AC401F6D6F3D0000EF31 /* PhoneNumberTableViewController.swift in Sources */,
@@ -428,6 +521,7 @@
 		};
 		AB54AC371F6D65B20000EF31 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA927ADD9B7B344140E858FF /* Pods-iOSTeamHomework.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -443,6 +537,7 @@
 		};
 		AB54AC381F6D65B20000EF31 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EEB337AD7C31E9463354E986 /* Pods-iOSTeamHomework.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

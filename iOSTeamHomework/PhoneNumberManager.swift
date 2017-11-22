@@ -91,4 +91,10 @@ class PhoneNumberManager {
             print("\(error)")
         }
     }
+    
+    func checkExisted(_ number: NumberData) -> Bool {
+        return numbers.filter {
+            return $0.code == number.code && $0.number == number.number
+        }.count > 0
+    }
 }

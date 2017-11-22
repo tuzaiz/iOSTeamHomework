@@ -7,29 +7,61 @@
 //
 
 import UIKit
+import ReactiveCocoa
+import ReactiveSwift
 
 class AddPhoneNumberViewController: UIViewController {
 
+    @IBOutlet var areaCodeField: UITextField!
+    @IBOutlet var phoneNumberField: UITextField!
+    @IBOutlet var saveButton: UIBarButtonItem!
+    @IBOutlet var numberExistedLabel: UILabel!
+    
+    var viewModel: AddPhoneNumberViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        bindViewModel()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private func bindViewModel() {
+        viewModel.code <~ areaCodeField.reactive.continuousTextValues.map({ (code) -> Int? in
+            guard let code = code else { return nil }
+            return Int(code)
+        })
+        viewModel.number <~ phoneNumberField.reactive.continuousTextValues.map({ (code) -> Int? in
+            guard let code = code else { return nil }
+            return Int(code)
+        })
+        
+        phoneNumberField.reactive.text <~ viewModel.number.map({ (number) -> String? in
+            guard let number = number else { return nil }
+            return String(number)
+        })
+        areaCodeField.reactive.text <~ viewModel.code.map({ (code) -> String? in
+            guard let code = code else { return nil }
+            return String(code)
+        })
+        
+        saveButton.reactive.isEnabled <~ viewModel.isEnableProducer
+        numberExistedLabel.reactive.isHidden <~ viewModel.isExistedProducer.map({ (existed) -> Bool in
+            return !existed
+        })
     }
-    */
+    
+}
 
+extension AddPhoneNumberViewController {
+    @IBAction func saveButtonTapped() {
+        guard let code = viewModel.code.value, let number = viewModel.number.value else {
+            return
+        }
+        let numberData = PhoneNumberManager.NumberData(code: code, number: number)
+        PhoneNumberManager.sharedInstance.add(numberData)
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func cancelButtonTapped() {
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
 }
