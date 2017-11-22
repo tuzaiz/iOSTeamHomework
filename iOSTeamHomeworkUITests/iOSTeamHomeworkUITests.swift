@@ -14,8 +14,6 @@ class iOSTeamHomeworkUITests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        PhoneNumberManager.sharedInstance.clear()
-        
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
@@ -30,8 +28,9 @@ class iOSTeamHomeworkUITests: XCTestCase {
     }
     
     func testAdd() {
-        
         let app = XCUIApplication()
+        app.launchEnvironment["-FakedData"] = "Y"
+        app.launch()
         let addButton = app.navigationBars["Phone Numbers"].buttons["Add"]
         addButton.tap()
         
@@ -58,8 +57,7 @@ class iOSTeamHomeworkUITests: XCTestCase {
         
         saveButton.tap()
         
-        XCTAssertEqual(XCUIApplication().tables.tableRows.count, 2)
-
+        XCTAssertEqual(app.tables.cells.count, 2)
     }
     
     func testCancelAdding() {
