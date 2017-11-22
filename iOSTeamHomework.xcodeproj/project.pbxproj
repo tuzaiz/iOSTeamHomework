@@ -10,6 +10,7 @@
 		47E13A4A1FC5972800473AC0 /* AddPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E13A491FC5972800473AC0 /* AddPhoneNumberViewController.swift */; };
 		47E13A4C1FC59AC300473AC0 /* AddPhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E13A4B1FC59AC300473AC0 /* AddPhoneNumberViewModel.swift */; };
 		47E13A4E1FC5A84100473AC0 /* AddPhoneNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E13A4D1FC5A84100473AC0 /* AddPhoneNumberTests.swift */; };
+		47E13A511FC5BC9600473AC0 /* PhoneNumberManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E13A501FC5BC9600473AC0 /* PhoneNumberManagerTests.swift */; };
 		6C98D0F1BA2DBA5FB725F73C /* Pods_iOSTeamHomework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DDB9CEACB1BCDAD6ECC85D6 /* Pods_iOSTeamHomework.framework */; };
 		8D1FF83173CAFEFF991037BB /* Pods_iOSTeamHomeworkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BB0AC2ED23AE0511E6CCAD /* Pods_iOSTeamHomeworkTests.framework */; };
 		AB54AC121F6D65B20000EF31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB54AC111F6D65B20000EF31 /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 		47E13A491FC5972800473AC0 /* AddPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhoneNumberViewController.swift; sourceTree = "<group>"; };
 		47E13A4B1FC59AC300473AC0 /* AddPhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		47E13A4D1FC5A84100473AC0 /* AddPhoneNumberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhoneNumberTests.swift; sourceTree = "<group>"; };
+		47E13A501FC5BC9600473AC0 /* PhoneNumberManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberManagerTests.swift; sourceTree = "<group>"; };
 		5DDB9CEACB1BCDAD6ECC85D6 /* Pods_iOSTeamHomework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSTeamHomework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C195929AC9718A0F5176460 /* Pods-iOSTeamHomeworkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSTeamHomeworkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSTeamHomeworkTests/Pods-iOSTeamHomeworkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AA927ADD9B7B344140E858FF /* Pods-iOSTeamHomework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSTeamHomework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSTeamHomework/Pods-iOSTeamHomework.debug.xcconfig"; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				AB54AC261F6D65B20000EF31 /* iOSTeamHomeworkTests.swift */,
+				47E13A501FC5BC9600473AC0 /* PhoneNumberManagerTests.swift */,
 				47E13A4D1FC5A84100473AC0 /* AddPhoneNumberTests.swift */,
 				AB54AC281F6D65B20000EF31 /* Info.plist */,
 			);
@@ -435,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB54AC271F6D65B20000EF31 /* iOSTeamHomeworkTests.swift in Sources */,
+				47E13A511FC5BC9600473AC0 /* PhoneNumberManagerTests.swift in Sources */,
 				47E13A4E1FC5A84100473AC0 /* AddPhoneNumberTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
