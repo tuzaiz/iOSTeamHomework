@@ -7,13 +7,14 @@
 //
 
 import XCTest
+@testable import iOSTeamHomework
 
 class iOSTeamHomeworkUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
         
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        PhoneNumberManager.sharedInstance.clear()
         
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
@@ -24,13 +25,50 @@ class iOSTeamHomeworkUITests: XCTestCase {
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testAdd() {
+        
+        let app = XCUIApplication()
+        let addButton = app.navigationBars["Phone Numbers"].buttons["Add"]
+        addButton.tap()
+        
+        let codeTextField = app.textFields["Code"]
+        codeTextField.tap()
+        codeTextField.typeText("123")
+        
+        let phoneNumberTextField = app.textFields["Phone Number"]
+        phoneNumberTextField.tap()
+        phoneNumberTextField.typeText("123456")
+        
+        let saveButton = app.navigationBars["iOSTeamHomework.AddPhoneNumberView"].buttons["Save"]
+        saveButton.tap()
+        
+        addButton.tap()
+        codeTextField.tap()
+        codeTextField.typeText("123")
+        phoneNumberTextField.tap()
+        phoneNumberTextField.typeText("123456")
+        XCTAssertTrue(app.staticTexts["This number is already existed."].exists)
+        
+        phoneNumberTextField.typeText("654321")
+        XCTAssertFalse(app.staticTexts["This number is already existed."].exists)
+        
+        saveButton.tap()
+        
+        XCTAssertEqual(XCUIApplication().tables.tableRows.count, 2)
+
+    }
+    
+    func testCancelAdding() {
+        let app = XCUIApplication()
+        let addButton = app.navigationBars["Phone Numbers"].buttons["Add"]
+        addButton.tap()
+        
+        let cancelButton = app.navigationBars["iOSTeamHomework.AddPhoneNumberView"].buttons["Cancel"]
+        cancelButton.tap()
     }
     
 }
