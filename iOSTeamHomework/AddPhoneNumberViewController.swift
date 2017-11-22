@@ -43,8 +43,8 @@ class AddPhoneNumberViewController: UIViewController {
             return String(code)
         })
         
-        saveButton.reactive.isEnabled <~ viewModel.isEnableProducer
-        numberExistedLabel.reactive.isHidden <~ viewModel.isExistedProducer.map({ (existed) -> Bool in
+        saveButton.reactive.isEnabled <~ viewModel.isEnabled
+        numberExistedLabel.reactive.isHidden <~ viewModel.isExisted.map({ (existed) -> Bool in
             return !existed
         })
     }
@@ -53,12 +53,12 @@ class AddPhoneNumberViewController: UIViewController {
 
 extension AddPhoneNumberViewController {
     @IBAction func saveButtonTapped() {
-        guard let code = viewModel.code.value, let number = viewModel.number.value else {
-            return
+        do {
+            try viewModel.save()
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        } catch {
+            preconditionFailure()
         }
-        let numberData = PhoneNumberManager.NumberData(code: code, number: number)
-        PhoneNumberManager.sharedInstance.add(numberData)
-        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancelButtonTapped() {

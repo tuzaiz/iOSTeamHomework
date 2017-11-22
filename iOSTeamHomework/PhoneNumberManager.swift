@@ -92,6 +92,10 @@ class PhoneNumberManager {
         }
     }
     
+    func clear() {
+        numbers = []
+    }
+    
     func checkExisted(_ number: NumberData) -> Bool {
         return numbers.filter {
             return $0.code == number.code && $0.number == number.number

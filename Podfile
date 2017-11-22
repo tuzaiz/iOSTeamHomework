@@ -4,3 +4,7 @@ target "iOSTeamHomework" do
 	pod "ReactiveCocoa", "~> 7.0"
 end
 
+target "iOSTeamHomeworkTests" do
+	use_frameworks!
+	pod "ReactiveCocoa", "~> 7.0"
+end
