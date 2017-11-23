@@ -27,4 +27,18 @@ class StubPhoneNumberManager: PhoneNumberInteractor {
     }
     func load() {}
     func save() {}
+    
+    func reset() {
+        numbers = [
+        NumberData(code: 1, number: 111),
+        NumberData(code: 1, number: 222),
+        NumberData(code: 1, number: 333),
+        NumberData(code: 2, number: 111),
+        NumberData(code: 2, number: 222),
+        NumberData(code: 2, number: 333),
+        NumberData(code: 3, number: 111),
+        NumberData(code: 3, number: 222),
+        NumberData(code: 3, number: 333)
+        ]
+    }
 }

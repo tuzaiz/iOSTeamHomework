@@ -23,26 +23,16 @@ class PhoneNumberManagerTests: XCTestCase {
     }
     
     func testAdding() {
-        let expect = expectation(description: "WaitForNotification")
-        NotificationCenter.default.addObserver(forName: PhoneNumberManager.dataChangedNotification, object: nil, queue: nil) { (_) in
-            expect.fulfill()
-        }
-        
         XCTAssertEqual(manager.numbers.count, 0)
-        let number = PhoneNumberManager.NumberData(code: 1, number: 111)
+        let number = NumberData(code: 1, number: 111)
         manager.add(number)
         XCTAssertEqual(manager.numbers.count, 1)
         XCTAssertEqual(manager.numbers.first!.code, 1)
         XCTAssertEqual(manager.numbers.first!.number, 111)
-        
-        waitForExpectations(timeout: 1.0) { (error) in
-            XCTAssertNil(error)
-            NotificationCenter.default.removeObserver(self, name: PhoneNumberManager.dataChangedNotification, object: nil)
-        }
     }
     
     func testRemoving() {
-        let defaultNumber = PhoneNumberManager.NumberData(code: 1, number: 1)
+        let defaultNumber = NumberData(code: 1, number: 1)
         manager.add(defaultNumber)
         
         XCTAssertEqual(manager.numbers.count, 1)
@@ -51,18 +41,18 @@ class PhoneNumberManagerTests: XCTestCase {
     }
     
     func testGetting() {
-        let number1 = PhoneNumberManager.NumberData(code: 1, number: 111)
-        let number2 = PhoneNumberManager.NumberData(code: 2, number: 111)
-        let number3 = PhoneNumberManager.NumberData(code: 1, number: 222)
+        let number1 = NumberData(code: 100, number: 111)
+        let number2 = NumberData(code: 200, number: 111)
+        let number3 = NumberData(code: 100, number: 222)
         manager.add(number1)
         manager.add(number2)
         manager.add(number3)
         
         XCTAssertEqual(manager.getCodes().count, 2)
         let code1 = manager.getCodes()[0]
-        XCTAssertEqual(code1, 1)
+        XCTAssertEqual(code1, 100)
         let code2 = manager.getCodes()[1]
-        XCTAssertEqual(code2, 2)
+        XCTAssertEqual(code2, 200)
         let numbers1 = manager.getNumbers(for: code1)
         XCTAssertEqual(numbers1.count, 2)
         XCTAssertEqual(numbers1.first!.number, 111)
@@ -73,14 +63,14 @@ class PhoneNumberManagerTests: XCTestCase {
     }
     
     func testChecking() {
-        let number1 = PhoneNumberManager.NumberData(code: 1, number: 111)
-        let number2 = PhoneNumberManager.NumberData(code: 2, number: 111)
-        let number3 = PhoneNumberManager.NumberData(code: 1, number: 222)
+        let number1 = NumberData(code: 199, number: 111)
+        let number2 = NumberData(code: 299, number: 111)
+        let number3 = NumberData(code: 199, number: 222)
         manager.add(number1)
         manager.add(number2)
         manager.add(number3)
         
-        let number4 = PhoneNumberManager.NumberData(code: 3, number: 111)
+        let number4 = NumberData(code: 399, number: 111)
         XCTAssertTrue(manager.checkExisted(number2))
         XCTAssertFalse(manager.checkExisted(number4))
     }

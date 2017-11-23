@@ -15,13 +15,12 @@ class AddPhoneNumberTests: XCTestCase {
     override func setUp() {
         super.setUp()
         viewModel = AddPhoneNumberViewModel()
-        PhoneNumberManager.sharedInstance.add(PhoneNumberManager.NumberData(code: 1, number: 11111111))
-        PhoneNumberManager.sharedInstance.add(PhoneNumberManager.NumberData(code: 1, number: 22222222))
+        viewModel.phoneNumberManager = StubPhoneNumberManager.sharedInstance
     }
     
     override func tearDown() {
+        (viewModel.phoneNumberManager as! StubPhoneNumberManager).reset()
         viewModel = nil
-        PhoneNumberManager.sharedInstance.clear()
         super.tearDown()
     }
     
@@ -29,13 +28,13 @@ class AddPhoneNumberTests: XCTestCase {
         XCTAssertFalse(viewModel.isEnabled.value)
         XCTAssertFalse(viewModel.isExisted.value)
         
-        viewModel.code.value = 2
+        viewModel.code.value = 1
         viewModel.number.value = 187361298
         XCTAssertTrue(viewModel.isEnabled.value)
         XCTAssertFalse(viewModel.isExisted.value)
         
         viewModel.code.value = 1
-        viewModel.number.value = 11111111
+        viewModel.number.value = 111
         XCTAssertFalse(viewModel.isEnabled.value)
         XCTAssertTrue(viewModel.isExisted.value)
     }
