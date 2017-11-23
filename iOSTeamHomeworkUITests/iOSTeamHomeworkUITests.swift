@@ -57,7 +57,7 @@ class iOSTeamHomeworkUITests: XCTestCase {
         
         saveButton.tap()
         
-        XCTAssertEqual(app.tables.cells.count, 2)
+        XCTAssertEqual(app.tables.cells.count, 11)
     }
     
     func testCancelAdding() {

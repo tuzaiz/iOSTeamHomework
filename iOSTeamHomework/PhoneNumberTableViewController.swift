@@ -10,13 +10,18 @@ import UIKit
 
 class PhoneNumberTableViewController: UITableViewController {
 
+    var phoneNumberManager: PhoneNumberInteractor = PhoneNumberManager.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(dataChanged), name: PhoneNumberManager.dataChangedNotification, object: nil)
+        if let _ = ProcessInfo.processInfo.environment["-FakedData"] {
+            phoneNumberManager = StubPhoneNumberManager.sharedInstance
+        }
+        NotificationCenter.default.addObserver(self, selector: #selector(dataChanged), name: .dataChangedNotification, object: nil)
     }
     
     @IBAction func savePhoneNumbers() {
-        PhoneNumberManager.sharedInstance.save()
+        phoneNumberManager.save()
     }
     
     @objc func dataChanged() {
@@ -35,24 +40,24 @@ extension PhoneNumberTableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return PhoneNumberManager.sharedInstance.getCodes().count
+        return phoneNumberManager.getCodes().count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let code = PhoneNumberManager.sharedInstance.getCodes()[section]
-        return PhoneNumberManager.sharedInstance.getNumbers(for: code).count
+        let code = phoneNumberManager.getCodes()[section]
+        return phoneNumberManager.getNumbers(for: code).count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let code = PhoneNumberManager.sharedInstance.getCodes()[section]
+        let code = phoneNumberManager.getCodes()[section]
         return "\(code)"
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "default", for: indexPath)
 
-        let code = PhoneNumberManager.sharedInstance.getCodes()[indexPath.section]
-        let data = PhoneNumberManager.sharedInstance.getNumbers(for: code)[indexPath.row]
+        let code = phoneNumberManager.getCodes()[indexPath.section]
+        let data = phoneNumberManager.getNumbers(for: code)[indexPath.row]
         
         cell.textLabel?.text = "\(data.number)"
         cell.detailTextLabel?.text = "\(data.code) \(data.number)"
@@ -73,9 +78,9 @@ extension PhoneNumberTableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let code = PhoneNumberManager.sharedInstance.getCodes()[indexPath.section]
-            let data = PhoneNumberManager.sharedInstance.getNumbers(for: code)[indexPath.row]
-            PhoneNumberManager.sharedInstance.remove(data)
+            let code = phoneNumberManager.getCodes()[indexPath.section]
+            let data = phoneNumberManager.getNumbers(for: code)[indexPath.row]
+            phoneNumberManager.remove(data)
         }
     }
 }

@@ -16,6 +16,8 @@ class AddPhoneNumberViewModel {
         case missingRequired
     }
     
+    var phoneNumberManager: PhoneNumberInteractor = PhoneNumberManager.sharedInstance
+    
     let code = MutableProperty<Int?>(nil)
     let number = MutableProperty<Int?>(nil)
     
@@ -24,6 +26,9 @@ class AddPhoneNumberViewModel {
     let isEnabled: MutableProperty<Bool> = MutableProperty<Bool>(false)
     
     init() {
+        if let _ = ProcessInfo.processInfo.environment["-FakedData"] {
+            phoneNumberManager = StubPhoneNumberManager.sharedInstance
+        }
         bindData()
     }
     
@@ -33,8 +38,8 @@ class AddPhoneNumberViewModel {
                 let number = values.1 else {
                     return false
             }
-            let numberData = PhoneNumberManager.NumberData(code: code, number: number)
-            return PhoneNumberManager.sharedInstance.checkExisted(numberData)
+            let numberData = NumberData(code: code, number: number)
+            return self.phoneNumberManager.checkExisted(numberData)
         })
         
         isEnabled <~ code.producer.combineLatest(with: number.producer).map({ (values) -> Bool in
@@ -42,8 +47,8 @@ class AddPhoneNumberViewModel {
                 let number = values.1 else {
                     return false
             }
-            let numberData = PhoneNumberManager.NumberData(code: code, number: number)
-            return !PhoneNumberManager.sharedInstance.checkExisted(numberData)
+            let numberData = NumberData(code: code, number: number)
+            return !self.phoneNumberManager.checkExisted(numberData)
         })
     }
     
@@ -51,7 +56,7 @@ class AddPhoneNumberViewModel {
         guard let code = code.value, let number = number.value else {
             throw InteractionError.missingRequired
         }
-        let numberData = PhoneNumberManager.NumberData(code: code, number: number)
-        PhoneNumberManager.sharedInstance.add(numberData)
+        let numberData = NumberData(code: code, number: number)
+        phoneNumberManager.add(numberData)
     }
 }

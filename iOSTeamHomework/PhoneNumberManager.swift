@@ -8,26 +8,23 @@
 
 import Foundation
 
-class PhoneNumberManager {
-    struct NumberData {
-        var code: Int
-        var number: Int
-    }
-    
-    static let sharedInstance = PhoneNumberManager()
-    static let dataChangedNotification: Notification.Name = Notification.Name("PhoneNumberManager.dataChangedNotification")
-    
-    private(set) var numbers: [NumberData] = [] {
-        didSet {
-            NotificationCenter.default.post(name: PhoneNumberManager.dataChangedNotification, object: nil)
-        }
-    }
-    
-    func add(_ number: NumberData) {
+struct NumberData {
+    var code: Int
+    var number: Int
+}
+
+protocol PhoneNumberInteractor {
+    var numbers: [NumberData] { get set }
+    func load()
+    func save()
+}
+
+extension PhoneNumberInteractor {
+    mutating func add(_ number: NumberData) {
         numbers.append(number)
     }
     
-    func remove(_ number: NumberData) {
+    mutating func remove(_ number: NumberData) {
         let index = numbers.index { (data) -> Bool in
             return data.code == number.code && data.number == number.number
         }
@@ -56,6 +53,27 @@ class PhoneNumberManager {
         return numbers.filter({ (data) -> Bool in
             return data.code == code
         })
+    }
+    
+    func checkExisted(_ number: NumberData) -> Bool {
+        return numbers.filter {
+            return $0.code == number.code && $0.number == number.number
+            }.count > 0
+    }
+}
+
+extension Notification.Name {
+    static let dataChangedNotification: Notification.Name = Notification.Name("PhoneNumberManager.dataChangedNotification")
+}
+
+class PhoneNumberManager: PhoneNumberInteractor {
+    
+    static let sharedInstance = PhoneNumberManager()
+    
+    var numbers: [NumberData] = [] {
+        didSet {
+            NotificationCenter.default.post(name: .dataChangedNotification, object: nil)
+        }
     }
     
     func load() {
@@ -90,15 +108,5 @@ class PhoneNumberManager {
         } catch let error {
             print("\(error)")
         }
-    }
-    
-    func clear() {
-        numbers = []
-    }
-    
-    func checkExisted(_ number: NumberData) -> Bool {
-        return numbers.filter {
-            return $0.code == number.code && $0.number == number.number
-        }.count > 0
     }
 }
